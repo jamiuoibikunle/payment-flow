@@ -11,7 +11,7 @@ export const App = () => {
     const [lgas, setLgas] = useState([]);
 
     useEffect(() => {
-        fetch("http://locationsng-api.herokuapp.com/api/v1/states")
+        fetch("https://locationsng-api.herokuapp.com/api/v1/states")
             .then((response) => response.json())
             .then((response) => setStates(response))
             .catch((err) => console.error(err));
@@ -20,7 +20,7 @@ export const App = () => {
     useEffect(() => {
         state &&
             fetch(
-                `http://locationsng-api.herokuapp.com/api/v1/states/${state}/lgas`
+                `https://locationsng-api.herokuapp.com/api/v1/states/${state}/lgas`
             )
                 .then((response) => response.json())
                 .then((response) => setLgas(response))
