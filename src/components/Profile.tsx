@@ -56,8 +56,12 @@ const Profile = () => {
                         <option value="" disabled>
                             Please select
                         </option>
-                        {lgas.map((lga: string) => {
-                            return <option value={lga}>{lga}</option>;
+                        {lgas.map((lga: string, index: number) => {
+                            return (
+                                <option value={lga} key={index}>
+                                    {lga}
+                                </option>
+                            );
                         })}
                     </select>
                 </div>

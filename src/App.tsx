@@ -18,9 +18,17 @@ export const App = () => {
     }, []);
 
     useEffect(() => {
+        let newState;
+
+        if (state === "Federal Capital Territory") {
+            newState = "abuja";
+        } else {
+            newState = state.replaceAll(" ", "_");
+        }
+
         state &&
             fetch(
-                `https://locationsng-api.herokuapp.com/api/v1/states/${state}/lgas`
+                `https://locationsng-api.herokuapp.com/api/v1/states/${newState.toLowerCase()}/lgas`
             )
                 .then((response) => response.json())
                 .then((response) => setLgas(response))
