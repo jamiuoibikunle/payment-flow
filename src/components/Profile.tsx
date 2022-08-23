@@ -28,7 +28,6 @@ const forms = [
 
 const Profile = () => {
     const { step, setStep, states, setState, lgas } = useContext(context);
-    console.log(lgas);
 
     return (
         <form className={styles.container} onSubmit={() => setStep(step + 1)}>
