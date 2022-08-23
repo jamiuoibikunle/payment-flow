@@ -6,6 +6,14 @@ import Confirm from "./Confirm";
 import Pay from "./Pay";
 import Profile from "./Profile";
 
+interface Props {
+    step: number;
+    setStep: (step: number) => void;
+    states: { name: string }[];
+    setState: (state: string) => void;
+    lgas: string[];
+}
+
 const Main = () => {
     const { step } = useContext(context);
 
