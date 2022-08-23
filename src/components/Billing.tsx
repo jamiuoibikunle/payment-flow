@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { context } from "../App";
 import styles from "../styles/billing.module.css";
 
 const Billing = () => {
+    const { step, setStep } = useContext(context);
+
     return (
-        <main className={styles.container}>
+        <form onSubmit={() => setStep(step + 1)} className={styles.container}>
             <div className={styles.field}>
                 <label>
                     Name on Card <span style={{ color: "red" }}>*</span>
@@ -14,7 +17,7 @@ const Billing = () => {
                 <label>
                     Card Type <span style={{ color: "red" }}>*</span>
                 </label>
-                <select defaultValue="" className={styles.select}>
+                <select defaultValue="" className={styles.select} required>
                     <option value="" disabled>
                         Please select
                     </option>
@@ -29,22 +32,30 @@ const Billing = () => {
                     <label>
                         Card details <span style={{ color: "red" }}>*</span>
                     </label>
-                    <input type="text" />
+                    <input type="text" required />
                 </div>
                 <div className={styles.expiry}>
                     <label>
                         Expiry date <span style={{ color: "red" }}>*</span>
                     </label>
-                    <input type="text" />
+                    <input type="text" required />
                 </div>
                 <div className={styles.cvv}>
                     <label>
                         CVV <span style={{ color: "red" }}>*</span>
                     </label>
-                    <input type="text" />
+                    <input type="text" required />
                 </div>
             </div>
-        </main>
+            <section className={styles.submit}>
+                <div className={styles.next}>
+                    <button type="submit">Next</button>
+                </div>
+                <div className={styles.cancel} onClick={() => setStep(1)}>
+                    <button>Cancel Payment</button>
+                </div>
+            </section>
+        </form>
     );
 };
 

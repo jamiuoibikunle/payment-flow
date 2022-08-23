@@ -72,6 +72,52 @@
     width: 15%;
 }
 
+.submit {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.next {
+    background-color: #eab308;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.35rem;
+}
+
+.next button {
+    color: white;
+    font-weight: 500;
+    border-radius: 0.35rem;
+    height: 2.25rem;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+}
+
+.cancel {
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.35rem;
+}
+
+.cancel button {
+    color: #075985;
+    font-weight: 500;
+    border-radius: 0.35rem;
+    height: 2.25rem;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+}
+
 @media screen and (max-width: 540px) {
     .details {
         width: 100%;

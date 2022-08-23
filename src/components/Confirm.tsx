@@ -1,16 +1,16 @@
 import styles from "../styles/confirm.module.css";
 import success from "../resources/check-fill.svg";
+import { useContext } from "react";
+import { context } from "../App";
 
-interface Props {
-    handleHome: () => void;
-}
+const Confirm = () => {
+    const { setStep } = useContext(context);
 
-const Confirm = ({ handleHome }: Props) => {
     return (
         <main className={styles.container}>
             <main className={styles.wrapper}>
                 <div className={styles.success}>
-                    <img src={success} />
+                    <img src={success} alt="Transaction successful" />
                 </div>
                 <h1 className={styles.header}>Purchase Completed</h1>
                 <div className={styles.message}>
@@ -18,7 +18,7 @@ const Confirm = ({ handleHome }: Props) => {
                     transaction
                 </div>
                 <div className={styles.return}>
-                    <button onClick={handleHome}>Return Home</button>
+                    <button onClick={() => setStep(1)}>Return Home</button>
                 </div>
             </main>
         </main>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { context } from "../App";
 import styles from "../styles/profile.module.css";
 
 const forms = [
@@ -26,11 +27,14 @@ const forms = [
 ];
 
 const Profile = () => {
+    const { step, setStep, states, setState, lgas } = useContext(context);
+    console.log(lgas);
+
     return (
-        <main className={styles.container}>
-            {forms.map(({ name, placeholder, required, info }) => {
+        <form className={styles.container} onSubmit={() => setStep(step + 1)}>
+            {forms.map(({ name, placeholder, required, info }, index) => {
                 return (
-                    <div className={styles.field}>
+                    <div className={styles.field} key={index}>
                         <label>
                             {name}{" "}
                             {required && (
@@ -49,24 +53,47 @@ const Profile = () => {
             <div className={styles.region}>
                 <div className={styles.field}>
                     <label>Local Government</label>
-                    <select defaultValue="" className={styles.select}>
+                    <select defaultValue="" className={styles.select} required>
                         <option value="" disabled>
                             Please select
                         </option>
-                        <option value="surulere">Surulere</option>
+                        {lgas.map((lga: string) => {
+                            return <option value={lga}>{lga}</option>;
+                        })}
                     </select>
                 </div>
                 <div className={styles.field}>
                     <label>State</label>
-                    <select defaultValue="" className={styles.select}>
+                    <select
+                        defaultValue=""
+                        className={styles.select}
+                        onChange={(e) => setState(e.target.value)}
+                        required
+                    >
                         <option value="" disabled>
                             Please select
                         </option>
-                        <option value="lagos">Lagos</option>
+                        {states.map(
+                            (state: { name: string }, index: number) => {
+                                return (
+                                    <option key={index} value={state.name}>
+                                        {state.name}
+                                    </option>
+                                );
+                            }
+                        )}
                     </select>
                 </div>
             </div>
-        </main>
+            <section className={styles.submit}>
+                <div className={styles.next}>
+                    <button type="submit">Next</button>
+                </div>
+                <div className={styles.cancel} onClick={() => setStep(1)}>
+                    <button>Cancel Payment</button>
+                </div>
+            </section>
+        </form>
     );
 };
 
